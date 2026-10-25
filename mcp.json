@@ -1,0 +1,51 @@
+{
+  "mcpServers": {
+    "edward-jenner-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "JENNER",
+        "TARGET_CHAIN": "Sui",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "simulate_cowpox_neutralization_titer",
+          "description": "Models cross-protective antibody cross-reactivity neutralizing lethal variola smallpox challenge",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "inoculation_days": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "inoculation_days"
+            ]
+          }
+        },
+        {
+          "name": "calculate_herd_immunity_threshold",
+          "description": "Calculates population immunization coverage percentage required to eliminate pathogen transmission (1 - 1/R0)",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "basic_reproduction_r0": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "basic_reproduction_r0"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
